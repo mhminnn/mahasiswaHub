@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MahasiswaHub - Jasa & Magang Mahasiswa</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- BoxIcons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="loader"></div>
+        <h2>MahasiswaHub</h2>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">Mahasiswa<span>Hub</span></a>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#jasa">Jasa</a></li>
+                    <li><a href="#magang">Magang</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#testimoni">Testimoni</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="search-bar">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Cari jasa atau magang...">
+                    </div>
+                    <button class="btn-theme" id="themeToggle"><i class='bx bx-moon'></i></button>
+                    <button class="btn-login" onclick="openModal('loginModal')">Login</button>
+                    <button class="btn-primary" onclick="openModal('registerModal')">Daftar</button>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <i class='bx bx-menu'></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero section-reveal">
+        <div class="container hero-wrapper">
+            <div class="hero-content">
+                <h1 class="hero-title">Bangun Karier dan Penghasilan <span class="highlight">Sejak Kuliah</span></h1>
+                <p class="hero-subtitle">Temukan jasa mahasiswa berbakat dan lowongan magang terbaik dalam satu platform unggulan kami.</p>
+                <div class="hero-buttons">
+                    <a href="#jasa" class="btn-primary btn-lg">Cari Jasa</a>
+                    <a href="#magang" class="btn-secondary btn-lg">Cari Magang</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="500">0</h3><span>+</span>
+                        <p>Freelancer</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="200">0</h3><span>+</span>
+                        <p>Lowongan</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="1000">0</h3><span>+</span>
+                        <p>Pengguna</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Using placeholder gradient/image visually -->
+                <div class="image-placeholder">
+                    <i class='bx bx-laptop'></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fitur Utama -->
+    <section class="features section-reveal bg-light">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon"><i class='bx bx-search-alt'></i></div>
+                    <h3>Cari Freelancer</h3>
+                    <p>Temukan mahasiswa berbakat dari berbagai jurusan untuk membantu proyek Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class='bx bx-briefcase-alt-2'></i></div>
+                    <h3>Temukan Magang</h3>
+                    <p>Dapatkan pengalaman kerja di perusahaan ternama dari startup hingga korporasi.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class='bx bx-folder'></i></div>
+                    <h3>Bangun Portofolio</h3>
+                    <p>Catat prestasimu dan buat CV digital otomatis yang menarik perhatian HRD.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><i class='bx bx-chat'></i></div>
+                    <h3>Chat & Kolaborasi</h3>
+                    <p>Komunikasi real-time secara langsung dengan freelancer atau penyedia kerja.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Jasa Mahasiswa -->
+    <section id="jasa" class="jasa-section section-reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Jasa Mahasiswa <span class="highlight">Terpopuler</span></h2>
+                <p>Jelajahi berbagai layanan berkualitas yang ditawarkan oleh mahasiswa berbakat.</p>
+            </div>
+            
+            <div class="filter-container">
+                <div class="filter-group">
+                    <input type="text" id="searchJasa" placeholder="Cari nama jasa...">
+                    <select id="filterKategori">
+                        <option value="all">Semua Kategori</option>
+                        <option value="desain">Desain</option>
+                        <option value="video">Video</option>
+                        <option value="web">Web Dev</option>
+                        <option value="admin">Admin</option>
+                        <option value="tutor">Tutor</option>
+                    </select>
+                    <select id="sortJasa">
+                        <option value="new">Terbaru</option>
+                        <option value="murah">Harga Termurah</option>
+                        <option value="rating">Rating Tertinggi</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="jasa-grid" id="jasaGrid">
+                <!-- Cards will be generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portal Lowongan Magang -->
+    <section id="magang" class="magang-section section-reveal bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lowongan Magang <span class="highlight">Terbaru</span></h2>
+                <p>Kesempatan emas untuk memulai langkah awal karier profesional Anda.</p>
+            </div>
+
+            <div class="filter-container">
+                <div class="filter-group">
+                    <input type="text" id="searchMagang" placeholder="Cari posisi magang...">
+                    <select id="filterTipe">
+                        <option value="all">Semua Tipe Kerja</option>
+                        <option value="WFH">WFH</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Onsite">Onsite</option>
+                    </select>
+                    <select id="sortMagang">
+                        <option value="deadline">Deadline Terdekat</option>
+                        <option value="gaji">Uang Saku Tertinggi</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="magang-grid" id="magangGrid">
+                <!-- Cards will be generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard User (Simulasi) -->
+    <section id="dashboard" class="dashboard-section section-reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2><span class="highlight">Dashboard</span> Anda</h2>
+                <p>Kelola aktivitas, jasa, dan lamaran magang Anda dalam satu panel.</p>
+            </div>
+            
+            <div class="profile-progress card">
+                <div class="progress-info">
+                    <h4>Kelengkapan Profil</h4>
+                    <span>80%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 80%;"></div>
+                </div>
+                <p class="mt-2 text-small">Lengkapi profil Anda agar lebih dilirik oleh klien dan perusahaan.</p>
+            </div>
+
+            <div class="dashboard-stats mt-4">
+                <div class="stat-card">
+                    <div class="icon blue"><i class='bx bx-send'></i></div>
+                    <h3>12</h3>
+                    <p>Lamaran Terkirim</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon green"><i class='bx bx-phone-call'></i></div>
+                    <h3>3</h3>
+                    <p>Interview Dipanggil</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon purple"><i class='bx bx-store-alt'></i></div>
+                    <h3>2</h3>
+                    <p>Jasa Aktif</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon gold"><i class='bx bx-wallet'></i></div>
+                    <h3>Rp 1.5M</h3>
+                    <p>Penghasilan Bulan Ini</p>
+                </div>
+            </div>
+
+            <div class="dashboard-tools mt-4">
+                <!-- Portofolio Builder -->
+                <div class="portfolio-builder card">
+                    <h3>Portofolio Builder</h3>
+                    <form id="portfolioForm">
+                        <div class="form-group row">
+                            <input type="text" placeholder="Nama Lengkap" required>
+                            <input type="text" placeholder="Jurusan" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Skill (pisahkan dengan koma)" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Pengalaman" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <input type="url" placeholder="Link GitHub">
+                            <input type="url" placeholder="Link Behance/LinkedIn">
+                        </div>
+                        <button type="submit" class="btn-primary w-100">Buat CV Digital</button>
+                    </form>
+                </div>
+
+                <!-- Chat Dummy -->
+                <div class="chat-dummy card">
+                    <div class="chat-header">
+                        <div class="chat-avatar"><i class='bx bxs-user-circle'></i></div>
+                        <div>
+                            <h4>Budi Klien</h4>
+                            <span class="status-online">Online</span>
+                        </div>
+                    </div>
+                    <div class="chat-body" id="chatBody">
+                        <div class="message received">Halo, apakah jasa desain logonya masih tersedia?</div>
+                        <div class="message sent">Halo Budi! Ya, masih tersedia. Ada yang bisa saya bantu?</div>
+                    </div>
+                    <div class="chat-footer">
+                        <input type="text" id="chatInput" placeholder="Ketik pesan...">
+                        <button onclick="sendMessage()"><i class='bx bxs-send'></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistik Section -->
+    <section class="statistik-section section-reveal bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Statistik <span class="highlight">MahasiswaHub</span></h2>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <canvas id="userChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <canvas id="kategoriChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <canvas id="lowonganChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artikel Karier -->
+    <section class="artikel-section section-reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Artikel & <span class="highlight">Tips Karier</span></h2>
+                <p>Panduan sukses dunia kampus dan persiapan kerja.</p>
+            </div>
+            <div class="artikel-grid" id="artikelGrid">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section id="testimoni" class="testimoni-section section-reveal bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kisah <span class="highlight">Sukses</span></h2>
+                <p>Apa kata mereka tentang MahasiswaHub?</p>
+            </div>
+            <div class="testimoni-scroll" id="testimoniContainer">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section section-reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tanya Jawab <span class="highlight">(FAQ)</span></h2>
+            </div>
+            <div class="faq-container">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">Apakah pendaftaran di MahasiswaHub gratis? <i class='bx bx-chevron-down'></i></div>
+                        <div class="accordion-body">Ya, pendaftaran sepenuhnya gratis untuk semua mahasiswa dan perusahaan pencari pekerja/magang.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Bagaimana sistem pembayaran jasa? <i class='bx bx-chevron-down'></i></div>
+                        <div class="accordion-body">Pembayaran menggunakan sistem escrow (rekening bersama) untuk menjamin keamanan kedua belah pihak. Uang akan diteruskan ke mahasiswa setelah jasa selesai diselesaikan.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Apakah lowongan magang tervalidasi? <i class='bx bx-chevron-down'></i></div>
+                        <div class="accordion-body">Tentu. Tim kami menyeleksi dan memvalidasi setiap perusahaan yang memposting lowongan magang di platform kami.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Bagaimana cara menarik saldo penghasilan? <i class='bx bx-chevron-down'></i></div>
+                        <div class="accordion-body">Anda dapat menarik saldo ke rekening bank lokal atau e-wallet kapan saja dengan minimal penarikan Rp 50.000.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Apakah platform ini untuk semua jurusan? <i class='bx bx-chevron-down'></i></div>
+                        <div class="accordion-body">Ya! Kami merangkul mahasiswa dari semua fakultas dan program studi untuk menawarkan keahlian masing-masing.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak & Map -->
+    <section id="kontak" class="kontak-section section-reveal bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hubungi <span class="highlight">Kami</span></h2>
+            </div>
+            <div class="kontak-wrapper">
+                <div class="kontak-form card">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nama Lengkap" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="4" placeholder="Tulis pesan Anda disini..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-100">Kirim Pesan</button>
+                    </form>
+                </div>
+                <div class="kontak-map card p-0">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.24036665789!2d106.75936859365287!3d-6.229740156102143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x100c5e82dd4b820!2sJakarta!5e0!3m2!1sen!2sid!4v1700650000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>Mahasiswa<span>Hub</span></h2>
+                    <p>Platform digital menjembatani talenta mahasiswa dengan dunia profesional. Bangun kariermu sejak di bangku kuliah.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#jasa">Marketplace Jasa</a></li>
+                        <li><a href="#magang">Portal Magang</a></li>
+                        <li><a href="#testimoni">Testimoni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Hubungi Kami</h4>
+                    <p><i class='bx bx-envelope'></i> support@mahasiswahub.id</p>
+                    <p><i class='bx bx-phone'></i> +62 812 3456 7890</p>
+                    <div class="social-icons">
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MahasiswaHub. Developed for the future.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
+
+    <!-- MODALS -->
+    <!-- Modal Detail Jasa -->
+    <div class="modal" id="modalJasa">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalJasa')">&times;</span>
+            <div class="modal-body" id="modalJasaBody">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Booking Jasa -->
+    <div class="modal" id="modalBooking">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalBooking')">&times;</span>
+            <div class="modal-header">
+                <h3>Pesan Jasa</h3>
+            </div>
+            <form id="formBooking" onsubmit="submitForm(event, 'Pesanan Jasa berhasil dikirim!', 'modalBooking')">
+                <div class="form-group">
+                    <label>Nama Anda</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Jasa Terpilih</label>
+                    <input type="text" id="bookingJasaName" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Deadline yang Diinginkan</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Catatan/Briefing</label>
+                    <textarea rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-100">Kirim Pesanan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Detail Magang -->
+    <div class="modal" id="modalMagang">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalMagang')">&times;</span>
+            <div class="modal-body" id="modalMagangBody">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Apply Magang -->
+    <div class="modal" id="modalApply">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modalApply')">&times;</span>
+            <div class="modal-header">
+                <h3>Lamar Posisi Magang</h3>
+            </div>
+            <form id="formApply" onsubmit="submitForm(event, 'Lamaran Magang berhasil dikirim!', 'modalApply')">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Universitas</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Upload CV (PDF dummy)</label>
+                    <input type="file" required accept=".pdf">
+                </div>
+                <div class="form-group">
+                    <label>Pesan Singkat (Cover Letter)</label>
+                    <textarea rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-100">Kirim Lamaran</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Login Dummy -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content modal-sm">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <div class="modal-header">
+                <h3>Login</h3>
+            </div>
+            <form onsubmit="submitForm(event, 'Berhasil Login!', 'loginModal')">
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-primary w-100">Login</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal Daftar Dummy -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content modal-sm">
+            <span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
+            <div class="modal-header">
+                <h3>Daftar Akun Baru</h3>
+            </div>
+            <form onsubmit="submitForm(event, 'Pendaftaran Berhasil!', 'registerModal')">
+                <div class="form-group">
+                    <input type="text" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-primary w-100">Daftar Sekarang</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CV Preview Modal -->
+    <div class="modal" id="cvModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('cvModal')">&times;</span>
+            <div class="modal-header">
+                <h3>Preview CV Digital</h3>
+            </div>
+            <div class="cv-preview">
+                <div class="cv-header text-center">
+                    <h2 id="cvName">Nama</h2>
+                    <p id="cvJurusan">Jurusan</p>
+                </div>
+                <hr>
+                <h4>Skills</h4>
+                <p id="cvSkills"></p>
+                <h4>Pengalaman</h4>
+                <p id="cvExp"></p>
+                <h4>Links</h4>
+                <p id="cvLinks"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
